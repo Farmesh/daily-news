@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSB Strategic Briefing — 2026-10-15</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #070a13;
+      --bg-card: #0f1629;
+      --border-color: #1e293b;
+      --border-hover: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .nav-bar {
+      margin-bottom: 30px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-blue);
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f1629 0%, #16223e 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .classification {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px -10px rgba(56,189,248,0.15);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      background: rgba(15, 118, 110, 0.2);
+      color: #2dd4bf;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .index-num {
+      font-family: monospace;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .read-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(56,189,248,0.4);
+      transition: all 0.2s ease;
+    }
+
+    .read-btn:hover {
+      color: #60a5fa;
+      border-bottom-color: #60a5fa;
+      gap: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 0 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 16px 12px; }
+      header { padding: 28px 20px; }
+      h1 { font-size: 1.8rem; }
+      .news-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="nav-bar">
+      <a href="/" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Return to Archive Index
+      </a>
+    </div>
+
+    <header>
+      <span class="classification">Strategic Intelligence Briefing</span>
+      <h1>SSB Daily Digest</h1>
+      <div class="date-badge">Thursday, 15 October 2026</div>
+    </header>
+
+    <main>
+      
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#01</span>
+      </div>
+      <h2>Indian Navy to commission indigenous multi-purpose vessel Samarthak on October 16</h2>
+      <p>INS Samarthak, the first homegrown multi-purpose vessel with over 75% indigenous components built by L&T, is scheduled to join the Indian Navy on October 16.</p>
+      <a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxONGhKajAyTnp5cVhEVFpWRTFwSnhvbm9FR0djMEMxRTJYNkI5aXFZTnBia2gyQXR0bGZwRGVCN2JRd3pmVlpIREJqMnRfY25SbXdxSjd0REVjNllQRmhoMXMweUVvdkJ5X3hyTGV2NDU3ZjdheWE4ZVVScF9xZ0ZPLXY1a2o4eWg4QUs1VlFPR2w5TlNRYXgxR3hSZmZ2d3AtMFVqZGNjXzRHRE1BZjk1ZFB3YTVGRmZ3dEt3MHBMeFFDelFtdmhPcU1zWTljcGlhenjjMHNrTDdQU1J3QVY3WEdR0gHnAUFVX3lxTE1nUzFOb3ZTZHZjcjhtODRRSGppanY3aC1COVhsb1V1TkY2dHcyMDJOM051M0FOQ1FOX1lZeW1BMzhaM2EyWGppOXZHbVVBY3pQUHNwSU83czM3ZXlublJ1RWdpeWRZT2daQWZTaXFmdXhDaXlrREl6Y0tKaXV2UmdqZkxRSmJtZ21lQVc4RWh1UkJsVmFkbnFQX2N1cS1lWjRROS0yUjdkWDJzb2d2aGNDajhLSWRYOXBWcDBFM3UyT3pvVkNiOWJKQkZpYW4tNkkxUkNFWG80TnJBVFotOWE4UGRtWXBUNA?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#02</span>
+      </div>
+      <h2>Indian Navy hands over command of Bahrain-based multinational maritime Combined Task Force 154</h2>
+      <p>The Indian Navy successfully completed its maiden command of Combined Task Force 154 in Bahrain after 7,800 training hours, reinforcing India's role as a preferred security partner.</p>
+      <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOX1E3NHBwZURYdTVqTEZNbzEwUlFlS204d1M3TzdqaVZ2V2laeE5WSkpLWEtOMnRXbThtaTFpa20yOGdaQ0t4d21VdEFXd0lZeWw0UzlTaTJwcWozREFzbW9XMDFibXctQ0xlaXFXcjlkZUVrZ1diY3NYOFZ5Rk1aQ01tY3lOOHlQLU8xTllSTWJnSE1OM1dCWkhEcFE4RGpNaDJEdVJqbWpZVWVTS09BN05Oc0NCV2N5MmdYMDBsbFM?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#03</span>
+      </div>
+      <h2>Indian Navy commissions third anti-submarine warfare craft INS Mangrol in Mumbai</h2>
+      <p>The Indian Navy commissioned its third Anti-Submarine Warfare Shallow Water Craft (ASW SWC), INS Mangrol, in Mumbai to boost coastal defense capabilities.</p>
+      <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMjNmQjJfcXlWTmZZQjNraVZxTTZvZGFJWS1na1VDNW9xTzZBZU5tY3BnWnR3Z3lXSkZDZmxTSXBnTEVFc2txOWdESFF0QTZFb2V6V1ZnLUowcWw0NmpBWDR0d1dpZ3dvRnBnUGlBV3FnVzZvZ0hZVGU1NzY4NklFd2F0elVsYmhodW83R0V6Z3dkb3lRaXc5TjIxU0lxcDdGd011RVF2cWVTdw?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#04</span>
+      </div>
+      <h2>DRDO opens STANAG-6 armour technology to Indian industry for next-generation tanks</h2>
+      <p>DRDO has transferred STANAG-6 advanced armour technology to the domestic private industry to develop protection systems for next-generation battle tanks.</p>
+      <a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQUUxVWjJGQVRfSTR5TkI4WWw4TkhidDdmSVFjdk5ILWl5SnZfa2xwdDBTR21MQWx5WDBsaDFIWENFOGE3ZmdidUxsWk9aWUFTTVpHYVItem00RVBRWW5FQkRzM0d1ZkdzSGE5NXgxQlJtTDVtNXVZR3dqcWhyN0U4MHNJVkNMd2t0S1JjbURjdUpFTWExX28zbFY3aXgtLTFkTnEtRmR5N3dsUFBUNHRMdnd1bEdDVTE2bUtMTkNlWS1KclY1?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#05</span>
+      </div>
+      <h2>India and US discuss stronger defence ties during Admiral Paparo's visit</h2>
+      <p>Senior military leadership from India and the US met to discuss enhancing bilateral defence cooperation and interoperability in the Indo-Pacific region.</p>
+      <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQTkdCc0tWVnFrNHoxc2tiSDg2MDdDQTZ2SjRvU2pvdUU0a1pDTFBaajZxd3k1VGhBQWxyUzh4YVppOVhfSUZSUXp6ZFJJaGFOQTBoMWlSdzBiNWU1VW9KR214WkgyMVc4WDEzOVhNV01kVktneUtKZWNVWGJIZG9PenlJYWxfclRsbWtQb211QzNsMjZoM1BXZEpMSFJaeV82bjBqcA?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#06</span>
+      </div>
+      <h2>IMF backs India's updated GDP methodology, calls revision 'welcome development'</h2>
+      <p>The International Monetary Fund's Asia and Pacific Department Director Krishna Srinivasan has endorsed India's newly updated GDP calculation methodology.</p>
+      <a href="https://www.thehindu.com/business/imf-hails-indias-updated-gdp-methodology/article71586923.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🚀 Science & Tech</span>
+        <span class="index-num">#07</span>
+      </div>
+      <h2>US startup Reflect Orbital books two launches on Hyderabad-based Skyroot Aerospace's Vikram rockets</h2>
+      <p>US-based Reflect Orbital has signed an agreement with Hyderabad's Skyroot Aerospace to book two rocket launches for its orbital mirror constellation.</p>
+      <a href="https://www.thehindu.com/news/cities/Hyderabad/us-startup-reflect-orbital-books-two-launches-of-skyroot-aerospace/article71586855.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    </main>
+
+    <footer>
+      <p> For officer aspirants • Made By - Farmesh 🇮🇳</p>
+    </footer>
+  </div>
+</body>
+</html>
