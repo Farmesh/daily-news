@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmesh Kumar — Officer Candidate Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #070a13;
+      --bg-card: #0f1629;
+      --border-color: #1e293b;
+      --border-hover: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .wrapper {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* Hero Header */
+    header {
+      background: linear-gradient(135deg, #0f1629 0%, #16223e 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 48px 36px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .classification {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .candidate-subtitle {
+      color: var(--accent-blue);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .meta-pills {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Section Grid */
+    .section-title {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin: 36px 0 16px 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px -10px rgba(56,189,248,0.15);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-group {
+      margin-bottom: 14px;
+    }
+
+    .info-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .value {
+      font-size: 1rem;
+      color: #f8fafc;
+      font-weight: 500;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      color: #f1f5f9;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-secondary {
+      background: rgba(148, 163, 184, 0.15);
+      color: #94a3b8;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 0 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 16px 12px; }
+      header { padding: 32px 20px; }
+      h1 { font-size: 2.1rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Hero Header -->
+    <header>
+      <span class="classification">Personal Information Dossier • PIQ</span>
+      <h1>Farmesh Kumar</h1>
+      <div class="candidate-subtitle">B.Tech Computer Science Engineering | SSC(Tech) Aspirant</div>
+      <div class="meta-pills">
+        <span class="pill">DOB: 15-09-2003</span>
+        <span class="pill">Mandi, Himachal Pradesh</span>
+        <span class="pill">General / Hindu</span>
+      </div>
+    </header>
+
+    <!-- Background & Family -->
+    <div class="section-title">01. Background & Family Profile</div>
+    <div class="card grid-2">
+      <div>
+        <div class="info-group">
+          <span class="label">Father's Name & Occupation</span>
+          <span class="value">Jai Ram (Farmer)</span>
+        </div>
+        <div class="info-group" style="margin-top: 16px;">
+          <span class="label">Mother's Name & Occupation</span>
+          <span class="value">Rajni Devi (Dairy Farmer)</span>
+        </div>
+      </div>
+      <div>
+        <div class="info-group">
+          <span class="label">Native Residence</span>
+          <span class="value">Thamlah, Mandi, HP (Pop: 500)</span>
+        </div>
+        <div class="info-group" style="margin-top: 16px;">
+          <span class="label">Siblings</span>
+          <span class="value">Younger Brother (B.Sc Student)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Educational Record -->
+    <div class="section-title">02. Educational Credentials</div>
+    <div class="card" style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Qualification</th>
+            <th>Institute / Board</th>
+            <th>Year</th>
+            <th>Div / %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>B.Tech (Computer Science)</strong>[cite: 8]</td>
+            <td>Ram Devi IKGPTU Jindal Group[cite: 8]</td>
+            <td>2025[cite: 8]</td>
+            <td>First (82.40%)[cite: 8]</td>
+          </tr>
+          <tr>
+            <td><strong>10+2 (PCM)</strong>[cite: 8]</td>
+            <td>DAV Public School Gohar (HPBOSE)[cite: 8]</td>
+            <td>2021[cite: 8]</td>
+            <td>First (85.80%)[cite: 8]</td>
+          </tr>
+          <tr>
+            <td><strong>Matriculation</strong>[cite: 8]</td>
+            <td>DAV Public School Gohar (HPBOSE)[cite: 8]</td>
+            <td>2019[cite: 8]</td>
+            <td>First (89.50%)[cite: 8]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Achievements & Extracurriculars -->
+    <div class="section-title">03. Achievements & Leadership</div>
+    <div class="card grid-2">
+      <div>
+        <div class="info-group">
+          <span class="label">Sports & Martial Arts</span>
+          <span class="value">Kabaddi (2019–2024)<br>Judo & Karate — Green Belt Holder[cite: 8]</span>
+        </div>
+        <div class="info-group" style="margin-top: 16px;">
+          <span class="label">Hobbies & Interests</span>
+          <span class="value">Programming, Singing, Chess[cite: 8]</span>
+        </div>
+      </div>
+      <div>
+        <div class="info-group">
+          <span class="label">Extracurricular Leadership</span>
+          <span class="value">SIH Leader & Cultural Committee Head[cite: 8]<br>Smart India Hackathon 2023-24 (1st Position)[cite: 8]</span>
+        </div>
+        <div class="info-group" style="margin-top: 16px;">
+          <span class="label">Cultural Arts</span>
+          <span class="value">Traditional Natti Dance — 1st in Inter-College PTU Youth Fest[cite: 8]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SSB History -->
+    <div class="section-title">04. SSB Interview History</div>
+    <div class="card" style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Centre & Board</th>
+            <th>Batch / Entry</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>21 SSB Bhopal</strong>[cite: 8]</td>
+            <td>SSC(Tech)-66[cite: 8]</td>
+            <td>Dec 2025[cite: 8]</td>
+            <td><span class="badge-secondary">Stage-I Screened</span>[cite: 8]</td>
+          </tr>
+          <tr>
+            <td><strong>32 SSB Jalandhar</strong>[cite: 8]</td>
+            <td>SSC(Tech)-67[cite: 8]</td>
+            <td>May 2026[cite: 8]</td>
+            <td><span class="badge-secondary">Stage-II Conference</span>[cite: 8]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <p>Personal Dossier • Maintained for Officer Selection Commission 🇮🇳</p>
+    </footer>
+  </div>
+</body>
+</html>
