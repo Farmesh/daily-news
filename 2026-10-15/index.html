@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSB Strategic Briefing — 2026-10-15</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #070a13;
+      --bg-card: #0f1629;
+      --border-color: #1e293b;
+      --border-hover: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .nav-bar {
+      margin-bottom: 30px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-blue);
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f1629 0%, #16223e 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .classification {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px -10px rgba(56,189,248,0.15);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      background: rgba(15, 118, 110, 0.2);
+      color: #2dd4bf;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .index-num {
+      font-family: monospace;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .read-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(56,189,248,0.4);
+      transition: all 0.2s ease;
+    }
+
+    .read-btn:hover {
+      color: #60a5fa;
+      border-bottom-color: #60a5fa;
+      gap: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 0 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 16px 12px; }
+      header { padding: 28px 20px; }
+      h1 { font-size: 1.8rem; }
+      .news-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="nav-bar">
+      <a href="/" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Return to Archive Index
+      </a>
+    </div>
+
+    <header>
+      <span class="classification">Strategic Intelligence Briefing</span>
+      <h1>SSB Daily Digest</h1>
+      <div class="date-badge">Thursday, 15 October 2026</div>
+    </header>
+
+    <main>
+      
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#01</span>
+      </div>
+      <h2>Indian Navy to commission indigenous multi-purpose vessel INS Samarthak on October 16</h2>
+      <p>The Indian Navy is set to commission the homegrown multi-purpose vessel INS Samarthak featuring over 75% indigenous components on October 16.</p>
+      <a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxONGhKajAyTnp5cVhEVFpWRTFwSnhvbm9FR0djMEMxRTJYNkI5aXFZTnBia2gyQXR0bGZwRGVCN2JRd3BmVlpIREJqMnRfY25SbXdxSjd0REVjNllQRmhoMXMweUVvdkJ5X3hyTGV2NDU3ZjdheWE4ZVVScF9xZ0ZPLXY1a2o4eWg4QUs1VlFPR2w5TlNRYXgxR3hSZmZ2d3AtMFVqZGNjXzRHRE1BZjk1ZFB3YTVGRmZ3dEt3MHBMeFFDelFtdmhPcU1zWTljcGlhenJjMHNrTDdQU1J3QVY3WEdR0gHnAUFVX3lxTE1nUzFOb3ZTZHZjcjhtODRRSGppanY3aC1COVhsb1V1TkY2dHcyMDJOM051M0FOQ1FOX1lZeW1BMzhaM2EyWGppOXZHbVVBY3pQUHNwSU83czM3ZXlublJ1RWdpeWRZT2daQWZTaXFmdXhDaXlrREl6Y0tKaXV2UmdqZkxRSmJtZ21lQVc4RWh1UkJsVmFkbnFQX2N1cS1lWjRROS0yUjdkWDJzb2d2aGNDajhLSWRYOXBWcDBFM3UyT3pvVkNiOWJKQkZpYW4tNkkxUkNFWG80TnJBVFotOWE4UGRtWXBUNA" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#02</span>
+      </div>
+      <h2>Indian Navy commissions third anti-submarine warfare craft INS Mangrol in Mumbai</h2>
+      <p>The Indian Navy commissioned its third Anti-Submarine Warfare Shallow Water Craft, INS Mangrol, in Mumbai on October 12.</p>
+      <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMjNmQjJfcXlWTmZZQjNraVZxTTZvZGFJWS1na1VDNW9xTzZBZU5tY3BnWnR3Z3lXSkZDZmxTSXBnTEVFc2txOWdESFF0QTZFb2V6V1ZnLUowcWw0NmpBWDR0d1dpZ3dvRnBnUGlBV3FnVzZvZ0hZVGU1NzY4NklFd2F0elVsYmhodW83R0V6Z3dkb3lRaXc5TjIxU0lxcDdGd011RVF2cWVTdw" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#03</span>
+      </div>
+      <h2>Indian Navy successfully completes maiden command of Combined Task Force 154 in Bahrain</h2>
+      <p>The Indian Navy completed its first-ever command of the multinational maritime Combined Task Force 154 in Bahrain after 7,800 training hours.</p>
+      <a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxPRnBhX2FQWXR5OW1wWnJyT2ZGRjE0MmNVUUVpTlFXMm1jbHZfSHBpd0lQbU5uWUtVZkUxVVBCWWdYZkcwMnMtSlMtMU0xbXk3amt3TlRxbmJ5OU1aM1o4TzlTbFNPZmJwdndjcDdpMnpSaUdib0lZV1ZoUGhIelpNeWk3VmRDS2huUTdPNDFLX1g" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#04</span>
+      </div>
+      <h2>DRDO opens STANAG-6 armour technology to Indian industry for tanks</h2>
+      <p>DRDO has transferred STANAG-6 armour technology to the domestic Indian industry to support the development of next-generation tanks.</p>
+      <a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxQUUxVWjJGQVRfSTR5TkI4WWw4TkhidDdmSVFjdk5ILWl5SnZfa2xwdDBTR21MQWx5WDBsaDFIWENFOGE3ZmdidUxsWk9aWUFTTVpHYVItem00RVBRWW5FQkRzM0d1ZkdzSGE5NXgxQlJtTDVtNXVZR3dqcWhyN0U4MHNJVkNMd2t0S1JjbURjdUpFTWExX28zbFY3aXgtLTFkTnEtRmR5N3dsUFBUNHRMdnd1bEdDVTE2bUtMTkNlWS1KclY1" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#05</span>
+      </div>
+      <h2>Navy chief emphasizes critical importance of Indian Ocean choke points and drones</h2>
+      <p>The Navy Chief stated that the entire world has a stake in the Indian Ocean, highlighting security challenges across regional chokepoints and drones.</p>
+      <a href="https://news.google.com/rss/articles/CBMingJBVV95cUxPcGxPNnluVENRWk5MdVI0b0d0aHNSS0JiZHJha3F2bzU4Z0pzWFVObjlfU3pPWGNzX1ByYW90YTR1N3dJekR6WlU3MFhvWUhuYmluX1ExUGU5MWo2VDVab2g1LVk3bVRoSnF6VFlnTE5tXzA2UWxURzVxOU1uaDM5dzZvSGtKWDRzdlpQWFZ5blQ0dHFsYS1GaTZOd1FERElzaGhHdTNHYTFLU3RsbXprYTdBQy00UjVrZkJoSnd6eVBEbjFsRld4MzBtMUJMTmE3REJ5d3dPUFlGaU05TkpxanVLaE1PZ2JEVVhWY21QbkpzZmQwUFJMZkFta0FFQlkwMEJaM0UzWlVfN29TMWhsRlMyQW1FMjYxRkFzbkh30gGjAkFVX3lxTE5fOWU2OElBXzV2bTB1c1BQRURSTS1fbGFTekJtczFtQVFocTNZV3otMVNGSGUyUDdzV256cXpHUVdFem0yZVVLLTNxTGtfSDFVci1MUUQwNi1GSHVIMDBabHd1VzhSWW1pb1hIRlJld1ItYV9xVFd0eC1XRE1fWldzeW16N21SQllBV2ZEYzJOZ2JMaHNRNG16UHFXekFMd3N1YTE5V25YZ1Y2Z3Q5WU5ydjI4bXVpd2pjaUFoVDRmNGVZVFF1Y0FZTFlBQVNSWmNvQnVvV1ZKQTZybUxPTGNrRUVnYTZkMlNQc2pGWWtRczBkWTBXOTk2TEhkc3dER24wMVpPcm5jTWZtYXRVNktTNmhzRnpZT0FKbXNLQkhpUUhmSQ" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#06</span>
+      </div>
+      <h2>Navantia and Larsen & Toubro collaborate to offer LHDs to the Indian Navy</h2>
+      <p>Navantia and Larsen & Toubro have joined forces to offer Landing Helicopter Dock (LHD) amphibious ships to the Indian Navy.</p>
+      <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxQb0FGVUxvVzk5NjBXSFBKWFBIVnR5aDJuMlVGMEJKdGNmUHhsWWh3di12Rms4NThMTUF3SGt1b1d5Sjg0VkFnNm55alc5UEY2Ujc5NEdqdG1QU0dyc19OcEZ4a1FCWDNzZmxWLVBqQVJCYk93UUdsNHJQN3NYa0ItYUp0QWR2Mi11TkNVOGNXUGcybzNDMHFRSEkwTTcybU9DNVBmNWFDS05YVGFHbjJKUDBKc2t3dw" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#07</span>
+      </div>
+      <h2>India and US discuss stronger defence ties during Admiral Paparo's visit</h2>
+      <p>Senior military officials from India and the United States met to discuss bilateral defense cooperation and strategic partnership during Admiral Paparo's visit.</p>
+      <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQTkdCc0tWVnFrNHoxc2tiSDg2MDdDQTZ2SjRvU2pvdUU0a1pDTFBaajZxd3k1VGhBQWxyUzh4YVppOVhfSUZSUXp6ZFJJaGFOQTBoMWlSdzBiNWU1VW9KR214WkgyMVc4WDEzOVhNV01kVktneUtKZWNVWGJIZG9PenlJYWxfclRsbWtQb211QzNsMjZoM1BXZEpMSFJaeV82bjBqcA" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#08</span>
+      </div>
+      <h2>India and Sri Lanka exchange 240 military personnel in tri-service tour</h2>
+      <p>India and Sri Lanka conducted a reciprocal exchange involving 240 military personnel across a tri-service tour.</p>
+      <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPY1RNOWd1MjlIZlBvRGdvZ2owMHNaUnp6TG1WMk9uT1JDMUJBYTBHeXQ3T0IzRnFBcFhmcnVOYUpsdFlFc211Nm5nclFudW51REhMTVc3Mk9PRXlNeUVDY2VBemVva1NnMm5PMUszRndCUVFwT0JEd3VUMldURVZUdk9fcFB2RjF3Tnc5UVlrR2o2bmZ4SDQwUzVnOUZ5TmNtNlBNOGZ2bWdEQQ" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#09</span>
+      </div>
+      <h2>US official Marco Rubio to visit Mumbai and Jamnagar, bypassing Delhi</h2>
+      <p>US official Marco Rubio is scheduled to visit Mumbai and Jamnagar next week, with stops including the Jamnagar Reliance refinery.</p>
+      <a href="https://www.thehindu.com/news/national/marco-rubio-to-skip-delhi-visit-visit-mumbai-and-jamnagar-next-week/article71585393.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#010</span>
+      </div>
+      <h2>US politicians mistakenly feature Indian and Russian warships in Navy birthday greetings</h2>
+      <p>American politicians drew online attention after inadvertently using photos of Indian and Russian warships to greet the US Navy on its 251st anniversary.</p>
+      <a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPNVFtZDRrNjg1OFdjSmZiOXVfb2hDQkR2YUVOZmhtY3ctVjNnaXJXbE1oTEZnTmJ5enlQRDBGS1pvMlpnZm9NekpTLWc4YU5QWDMwQ0hCVkZkSlVRdDJvX1dLQ1g4cWFnMWdaVHBxdkE3R0oyNl84OXkwUURqNThiYnZLcDktekxZV0dHbWVvQ1dkYmxWTklDdElMZ0xMbVpHR2lqVFI4bWNudFNmbEhhbmVLYWFCYTJKX0F2RWZ5cWg3VlhLUEtoOTZoRzlqd9IB0wFBVV95cUxOTXFURWFoLVptVF9iRXlGU3pQbFEzS2dzcXZ3V1VraDAxVy1wbXRNQUFPc3JNdXBUMlAyenVFS1BSelFQYXFIUHdUTVNLaVRTM0g4V0FneFd2eHhwWHpmOS1ySm5uNkFBcmdzdExpVnVtSzA2LTNuTlNsSW5mVVY1a1FaTTBkNzN2NGdYUHloaTFidFZURDRKc3lfS1NRQTVjXzlpZkI1UEJNbG9aNnk1TGh0NGNjbkZ3bmI5R1BwWUpNcjREdm1TOThzOEZmRHF4WHNJ" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#011</span>
+      </div>
+      <h2>IMF backs India's updated GDP methodology as a welcome development</h2>
+      <p>The IMF's Asia and Pacific Department Director Krishna Srinivasan endorsed India's updated GDP calculation methodology as consistent with expert advice.</p>
+      <a href="https://www.thehindu.com/business/imf-hails-indias-updated-gdp-methodology/article71586923.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#012</span>
+      </div>
+      <h2>Indian bond yields touch three-year high amid oil pressures and RBI tightening</h2>
+      <p>Indian bond yields climbed to a three-year high driven by rising international oil prices and Reserve Bank of India tightening measures.</p>
+      <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMnl6bG1LVm12OG5sN0gyQU5JTHc3UUFTVE9FSjlfVnJvVVRoUVZEY0ZibTQ2dTFxeWoyM1JRMUszcGpnM3VxLTlNMUo4aVRROHJtMFlqRHV5b2tydzM2M3laQ3J2QllNMC1vT0VndEM4RGZhOXF5QUlwTzgzRmk1VmZNUlU0aVRZeUxQb0tzb0p6ZENvczJEUklXQXRpbFVYb3B5VXp3RDRwUQ" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#013</span>
+      </div>
+      <h2>Rupee hedging turmoil exposes strains in India's foreign exchange market</h2>
+      <p>Recent volatility in rupee hedging activities has highlighted emerging stresses within India's domestic foreign exchange markets.</p>
+      <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQbEZncTRaQmtoSzVKNGpFTnB2TGNJRGlQa2Z4OWNDMms5cHMxWk1KSl9naU5WOFdieWlUb0tRbmRpVGhOc3p4dkZvWll3SUVVYW1mLWV4RWZhVXRZOWN0NHh3WHdNNFB4VnZYTDFhMmlxamw1WThGclgybG5qOVhFQm9nZVZTekwybDJrMnhwVkhRRVJxdjhEcjhubXdOck9DbmUxYzlPNHNjeXFy" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🚀 Science & Tech</span>
+        <span class="index-num">#014</span>
+      </div>
+      <h2>US startup Reflect Orbital books two launches on Hyderabad's Skyroot Vikram rockets</h2>
+      <p>US-based Reflect Orbital has booked two space launches with Hyderabad startup Skyroot Aerospace for its orbital mirror operations.</p>
+      <a href="https://www.thehindu.com/news/cities/Hyderabad/us-startup-reflect-orbital-books-two-launches-of-skyroot-aerospace/article71586855.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 National Affairs</span>
+        <span class="index-num">#015</span>
+      </div>
+      <h2>Union Minister Amit Shah notes five decades of suffering caused by Naxalism</h2>
+      <p>Union Home Minister Amit Shah addressed a virtual assistance program in Chhattisgarh, emphasizing the decades of suffering caused by left-wing extremism.</p>
+      <a href="https://www.thehindu.com/news/national/end-of-naxalismdoesnt-erase-five-decades-of-suffering-it-caused-amit-shah/article71587327.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 National Affairs</span>
+        <span class="index-num">#016</span>
+      </div>
+      <h2>151 officer trainees participate in National Police Academy's 78th batch Dikshant Parade</h2>
+      <p>The 78th batch Dikshant Parade at the National Police Academy included 135 IPS probationers and 16 foreign officers from Nepal, Bhutan, and the Maldives.</p>
+      <a href="https://www.thehindu.com/news/national/telangana/151-officer-trainees-to-participate-in-78th-batchs-dikshant-parade-at-national-police-academy/article71586819.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 National Affairs</span>
+        <span class="index-num">#017</span>
+      </div>
+      <h2>Supreme Court holds conversion does not automatically grant backward quota benefits</h2>
+      <p>The Supreme Court upheld a Madras High Court order quashing reservation notifications for religious converts, ruling it creates artificial beneficiary groups.</p>
+      <a href="https://www.thehindu.com/news/national/supreme-court-upholds-madras-hc-order-quashing-tamil-nadu-reservation-notification-for-converts-to-islam/article71586768.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 National Affairs</span>
+        <span class="index-num">#018</span>
+      </div>
+      <h2>J&K High Court bans motorboats and jet skis on Dal Lake to protect environment</h2>
+      <p>The Jammu and Kashmir High Court prohibited the use of motorboats and jet skis on Dal Lake, exempting only official emergency and disaster management vessels.</p>
+      <a href="https://www.thehindu.com/news/national/jammu-and-kashmir/jammu-and-kashmir-high-court-bars-use-of-shikara-motorboats-jet-skis-on-dal-lake-in-srinagar/article71587182.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 National Affairs</span>
+        <span class="index-num">#019</span>
+      </div>
+      <h2>J&K Waqf Board pushes for uniform Friday sermons to de-politicise religious places</h2>
+      <p>The J&K Waqf Board introduced pre-approved uniform Friday sermons across mosques to manage societal concerns and limit political exploitation.</p>
+      <a href="https://www.thehindu.com/news/national/jammu-and-kashmir/why-jk-waqf-boards-push-to-uniform-friday-sermons-triggered-a-political-storm-explained/article71586648.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#020</span>
+      </div>
+      <h2>BEML holds high-level talks with Czechia Deputy Prime Minister for defense collaboration</h2>
+      <p>BEML met with Czechia Deputy Prime Minister Karel Havlíček to explore industrial and defense collaboration opportunities following talks with Rajnath Singh.</p>
+      <a href="https://www.thehindu.com/business/Industry/beml-meets-czechia-deputy-prime-minister-karel-havlicek-to-discuss-avenues-of-potential-collaboration/article71586767.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    </main>
+
+    <footer>
+      <p> For officer aspirants • Made By - Farmesh 🇮🇳</p>
+    </footer>
+  </div>
+</body>
+</html>
