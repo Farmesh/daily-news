@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSB Strategic Briefing — 2026-10-17</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #070a13;
+      --bg-card: #0f1629;
+      --border-color: #1e293b;
+      --border-hover: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .nav-bar {
+      margin-bottom: 30px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-blue);
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f1629 0%, #16223e 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .classification {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px -10px rgba(56,189,248,0.15);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      background: rgba(15, 118, 110, 0.2);
+      color: #2dd4bf;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .index-num {
+      font-family: monospace;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .read-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(56,189,248,0.4);
+      transition: all 0.2s ease;
+    }
+
+    .read-btn:hover {
+      color: #60a5fa;
+      border-bottom-color: #60a5fa;
+      gap: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 0 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 16px 12px; }
+      header { padding: 28px 20px; }
+      h1 { font-size: 1.8rem; }
+      .news-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="nav-bar">
+      <a href="/" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Return to Archive Index
+      </a>
+    </div>
+
+    <header>
+      <span class="classification">Strategic Intelligence Briefing</span>
+      <h1>SSB Daily Digest</h1>
+      <div class="date-badge">Saturday, 17 October 2026</div>
+    </header>
+
+    <main>
+      
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#01</span>
+      </div>
+      <h2>Indian Navy Commissions INS Samarthak, First Indigenous Multi-Purpose Vessel</h2>
+      <p>Built by L&T in Karwar, INS Samarthak is a major warship commissioned into the Indian Navy to serve as an indigenous testbed for next-generation weapons, drones, and naval technologies.</p>
+      <a href="https://news.google.com/rss/articles/CBMi9gFBVV95cUxNaWNKNU1BM1hkSmFhREcwMkxmQTdkMlFZeHJqZjRBU0FHZG5KLVpFekNjR2Fmd091OVRveEhJa2oyUHNYWXdWeTJtbnZ3MWhiSHBzZzVmWlF3b3JncndPOHYwQkZFYk8wbDZjQVpZaENsczMwYkZ6RGM0N0VRMFBpZE43ajZwem5UNUwtZElwN0VWSXlCOGdtYkZpRzQtZ3VHX3ZFV2FEVEV2N25tZlctQWJxMmNDTUF3X2c0RXpURnJfbnJRYXhNQnNSNHZfaWl0eFlKOGY2TlFoMTI2bjFRbWxneVZ1U3N0RHNQTnROQUQxZEpzcUHSAfsBQVVfeXFMUGZRUnJPR3FfWm9BVUFfUG90ZzNJUWljVHc0ZWprYnozZWJObldxZTNqclRWS3g2U1dYNFNNZ2JIMWpPZWJ5OG1ib1lSQ19Hb0g4akxpX0xSUUFnSUwtLTAxcEl1c0JZUnNGM1JveXpkTHZ4Q3oyVXlxOG04S3BaRkJoNzV1RnF0Um1zTG1MOUM0OXdodnBWSkh2OTQ4aHU2eHlXSXdzbzdvWC1hQTJIMm9XVWZLZmM3Z2VXV200TDRkZG9pS0F2LXFudlpXM2tIajdadWVKeXpPTEQyZXFLYTNrZnI4a1FOUkVVUDFJZ0NNSVl1N0RnLWFBTVk?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#02</span>
+      </div>
+      <h2>Indian Navy Commissions Third Anti-Submarine Warfare Craft INS Mangrol</h2>
+      <p>The Indian Navy has commissioned INS Mangrol in Mumbai, enhancing its shallow-water anti-submarine warfare capabilities.</p>
+      <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMjNmQjJfcXlWTmZZQjNraVZxTTZvZGFJWS1na1VDNW9xTzZBZU5tY3BnWnR3Z3lXSkZDZmxTSXBnTEVFc2txOWdESFF0QTZFb2V6V1ZnLUowcWw0NmpBWDR0d1dpZ3dvRnBnUGlBV3FnVzZvZ0hZVGU1NzY4NklFd2F0elVsYmhodW83R0V6Z3dkb3lRaXc5TjIxU0lxcDdGd011RVF2cWVTdw?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#03</span>
+      </div>
+      <h2>Air India and IndiGo Divert Riyadh Flights Following Missile Threat</h2>
+      <p>Flights were disrupted after Iran-aligned Houthi rebels reportedly targeted Saudi Arabia, with a missile fired towards Riyadh International Airport.</p>
+      <a href="https://www.thehindu.com/news/national/air-india-indigo-cancel-and-divert-riyadh-flights-after-missile-threat/article71560628.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#04</span>
+      </div>
+      <h2>RBI Approves Merger of Emirates NBD's Indian Branches with RBL Bank</h2>
+      <p>The Reserve Bank of India approved the amalgamation scheme, making the merger effective from December 1, 2026.</p>
+      <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOckVVWldiQ21qUlF4QVVzbmVzc3paYm03MWM4SEYtSmhsRThqOVgzN25iSmdiaVRmOUdoM05ZQ3hIbXJ4YUF0SXY0NVdydGJwbm1VcV8yY24zSGVSWDFXSVBvOXUwZTVfZ0hfemNqTXVTREQ5aGYwUXI4NjBpYVBjRGNYQ1FVZ3Q0QlpPeHpXby1nUElCanVrSjEwWGRSRFNFVzZUMThWUTdCbWhkb0ZZ?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#05</span>
+      </div>
+      <h2>Government Notifies CAPF Act Amid Pending Supreme Court Challenge</h2>
+      <p>The notification impacts cadre management and Indian Police Service officer deputations to senior leadership positions within Central Armed Police Forces.</p>
+      <a href="https://www.thehindu.com/news/national/government-notifies-capf-act-amid-pending-challenge-in-supreme-court/article71560542.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#06</span>
+      </div>
+      <h2>Security Forces Unearth 27 IEDs Along Manipur Border Stretch</h2>
+      <p>Assam Rifles and Indian Army bomb disposal teams neutralized 27 improvised explosive devices along an 8-km stretch in Manipur’s Kamjong.</p>
+      <a href="https://www.thehindu.com/news/national/manipur/security-forces-unearth-27-ieds-along-8-km-stretch-in-manipurs-kamjong/article71562716.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#07</span>
+      </div>
+      <h2>Sudhakar Dalela Appointed as India's Next Ambassador to Nepal</h2>
+      <p>Sudhakar Dalela, recognized as a key architect of recent multilateral diplomatic consensus, has been appointed as India's new envoy to Nepal.</p>
+      <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQTDN2WWJRYXpBSE1LeW5LaElRMi1Uald1a0tGWjBlUWxjel82ZDRXUE5razl5Znc5cW1hMlptV29LWTVMblhJVEp2Ri1vRDNiLUpkYVhkSkFJMkpkMzJCVFRLVzM2QmNlZUJaWjJZdXV4U251Z2taNGZvYXE4cnBLdmRZVWh1LURjRWlOd3lUUUNFQdIBmAFBVV95cUxOR2szMVQzNzBBblVjOGNHa3FxbTZDZHhJSnREZnY4OFRzeUdKQ2RQbm5aZVNWeUwxR1RQS3AzT004VEU1anFxX3NPSmFfd1pPaVVFeHVvUEhGczJxRk9JeW9ycW9jR1ZqT1hBTXlpdlo1VUNiV2pJRnNjRkNDU19OT3BXWUNqbEI4UXhuMDFjdVNYc2pneGFFUQ?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#08</span>
+      </div>
+      <h2>DRDO Offers 30 mm AP-Resistant STANAG Level 6 Lightweight Armour Tech to Industry</h2>
+      <p>DRDO has transferred advanced lightweight ballistic armor technology to Indian private industries to boost indigenous defense production.</p>
+      <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNX2hzV2VqeWtJSDZtdjdFYThVendFdDI0NzhuUnNkNTh2anZoRTZmQTlhS3RDS2piNHo4aVdFMl9iRV9kMDlEemdrdUVZTXhWZngzV0xFdW9fUVdualRqWkRQTEVhb3g5czFrRTcyaTNWajlxX3k0aGplOWJjdlRmN0dPRzhNX1Z4NUJMN2t4NlNxNUVkOVdRWXZaQ0stWklwVzdIUVNtRC14aVZaTzZ5MllQUFEwWmN6NFpjcHA4UQ?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#09</span>
+      </div>
+      <h2>Four CRPF Personnel Injured in Blast During Explosives Disposal in Sukma</h2>
+      <p>Four security personnel sustained injuries during a controlled disposal operation of explosives following standard safety protocols in Chhattisgarh.</p>
+      <a href="https://www.thehindu.com/news/national/chhattisgarh/four-crpf-personnel-injured-in-blast-during-explosives-disposal-in-sukma/article71562794.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#010</span>
+      </div>
+      <h2>India Cautiously Widens Rupee Defense Mechanism Amid Dollar Pressure</h2>
+      <p>The Reserve Bank of India has adjusted its foreign exchange strategy to limit sharp currency depreciation against the US Dollar.</p>
+      <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOR2hwbG5rb1hWdkpoWG82c2xNYUVOYVd3N0p5MV9yVXo2UEFXbWp3ZzdJNDF1WlE0RVhqNThvV2IyNHVQOVFTM3ZoZlJ5bmdoVkJjZ25aVmV3V05YUUZkc29xa1dxZUNMSEFiNlBjMFZxbjFZMDVqNnR3LTZDTFdvdFNLak5zWjA1eFhndW4ybGxCNER0SGc?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#011</span>
+      </div>
+      <h2>Indian Navy Concludes Multinational Maritime Exercise 'Operation Southern Readiness 26-2'</h2>
+      <p>The Indian Navy successfully completed joint maritime security drills hosted in Kochi to improve interoperability with partner nations.</p>
+      <a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOWXhhcnRGOVM4VnBoYll0RHdnVjhkbGlOZjJsNXdhcVdIaHIzYkFHaTNLLWdQRUZQWUJFMGZzWWZVaEZrMkkzaFg4VUJoS1J2RG1HUXQtN3FBOGhSaU5BRWRUSVhiZzNOUGxjWktVTDFtdmNIY1RjZWhmdzVOeXVSR0wzNURNOHQxbXZRUE5sZjdySmRIcWd2cHJ6b1hiekQ5ZlBvWEUzRmxEVC1QMjNPQkotSXk5akJ6V2tZeVRwYUNCbXZhQmpIOTc2Yw?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#012</span>
+      </div>
+      <h2>Andhra Pradesh Secures National Recognition for Renewable Energy Investments</h2>
+      <p>The state received the Leadership State in Renewable Energy Investment Mobilisation Award at the Windergy India 2026 conference in Chennai.</p>
+      <a href="https://www.thehindu.com/news/national/andhra-pradesh/andhra-pradesh-gets-national-recognition-for-attracting-investments-in-green-energy-sector/article71560560.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#013</span>
+      </div>
+      <h2>NAAC Overhauls Accreditation Framework to Prioritize Tangible Outcomes</h2>
+      <p>The new accreditation framework mandates higher educational institutions to demonstrate commercial patents and skilled student outputs rather than paperwork.</p>
+      <a href="https://www.thehindu.com/news/national/andhra-pradesh/naacs-new-accreditation-framework-to-prioritise-outcomes-over-inputs/article71560084.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#014</span>
+      </div>
+      <h2>Supreme Court Considers Tribunal Hearing Priority for Deleted Voters in West Bengal</h2>
+      <p>The Supreme Court proposed that tribunals should prioritize hearing voters seeking re-inclusion into electoral rolls over exclusion appeals.</p>
+      <a href="https://www.thehindu.com/news/national/west-bengal/west-bengal-sir-supreme-court-mulls-having-tribunals-first-hear-deleted-voters-seeking-re-inclusion/article71562834.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#015</span>
+      </div>
+      <h2>Piyush Goyal Backs Andhra Pradesh’s Industrial Pitch at CII Summit Curtain Raiser</h2>
+      <p>Union Minister Piyush Goyal supported state investment pitches as Andhra Pradesh reported attracting investment agreements worth ₹22 lakh crore.</p>
+      <a href="https://www.thehindu.com/news/national/andhra-pradesh/goyal-backs-andhras-investment-pitch-at-cii-curtain-raiser-naidu-cites-22-lakh-crore-in-agreements/article71559071.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#016</span>
+      </div>
+      <h2>PM Modi Extends Greetings to NSG Personnel on Raising Day</h2>
+      <p>Prime Minister Narendra Modi lauded the National Security Guard (NSG) on their raising day for their counter-terrorism and elite protection duties.</p>
+      <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPVFBMOGFwbGtNMDcxWWpMVHJiZDdWUVVRNXpLd0pHM3Z0aHdPbVdyZ05CUTh6TEw1MTlqWUNEX2lSTVNaclZoNC14enYxdzM3X2tDRm5jM1dQTmt3bHRsM3h0ejNXaTJoN25CNXc2Rzk5bHdvTXdGNEN0SUMwSzA2TzR2ZkVielI5Q0tpTDM4aTJVQQ?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#017</span>
+      </div>
+      <h2>India and U.S. Discuss Indo-Pacific Security and Defense Collaboration</h2>
+      <p>Senior defense officials from India and the United States held bilateral talks focusing on regional security architecture and joint technology development.</p>
+      <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPRkIyejdWMUxJZXVVNTNjem5UMU12Sk1hSE9BenVQQUtsOWY3cWMtME1xM045YlAwWXVmSGVjd2ZLYXlQdDc3Z0dWaFEyYm5LeHlmMXFiV1BIa2ZTQzdvRkJBV1ZwaVF1YWt4U2JaV0Y0N3NrUzE0YWF4WXdoLUstOXd5YmpNbkduWG1OZHU0cDRzaVNJZ19Ybkpabw?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#018</span>
+      </div>
+      <h2>Andhra Pradesh Declares Early Kharif Drought Across 21 Districts</h2>
+      <p>The state government declared drought in 56% of its mandals following a 53.4% rainfall deficit and adverse El Niño conditions between June and August.</p>
+      <a href="https://www.thehindu.com/news/national/andhra-pradesh/andhra-pradesh-declares-early-kharif-drought-in-388-mandals-across-21-districts/article71558175.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#019</span>
+      </div>
+      <h2>Cauvery Water Management Authority Directs Release of Water to Tamil Nadu</h2>
+      <p>The CWMA upheld the directive requiring Karnataka to release 3,000 cusecs of water daily to Tamil Nadu for 15 days despite Karnataka's hydrological distress.</p>
+      <a href="https://www.thehindu.com/news/national/karnataka/cauvery-water-management-authority-upholds-cauvery-water-regulation-committee-direction-to-karnataka-to-release-3000-cusecs-a-day-to-tamil-nadu-for-15-days/article71561073.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#020</span>
+      </div>
+      <h2>Indian and UK Navies Explore Deepened Operational Cooperation</h2>
+      <p>Naval leadership from India and the United Kingdom held talks to expand operational ties and integrate emerging defense technologies.</p>
+      <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxOdFl6T0dReEJVekNqb1ZKc0dNbWlrYWQ0b0RYTWR0TUlKQTdEbzZpeHlWUUxmalQ0STBobnNJNkR1WVRycHpxc280R3ZnRmdsYzBiMFQwNnpVNkh3Xy1zX1AxYzJoeWRYWTNjMjZ5X3V2VjNOMUxkcGd0QlF2Q2NsWkxZc2UyV3R3QzA3WjdPWG8tRlhCTnk3T3JtalZkWFB6ZEwwdnU5WlBoVWQ0bEdlRUh1SWpnSDVUeXlnU2dn0gHLAUFVX3lxTFBxMUtMSENaVnl5bXFlWldjbzMzM2ZIZ2wwamZRYXJOejRHVHBHMXI5czZLTzJPeVUtM1h4QXcyX2JjcTJDUzBuZEpqdXJkazIzaEh6S1NLTFZ5cnJ1WXc5akt5UmNIbF9tc2lSdzlKZjJvRDRCbW9qWGZvQy1EQ1lQRDU2T3k0MG5FQkxsSVBpaFNFcVJrS3Q5ZnVxWlgwN0U1UFNMWVZZUi1XQzZXVlJueEJNTkp3UkdXT25rdDJtdE9tRXhtSDhjMnM0?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#021</span>
+      </div>
+      <h2>Kerala Rolls Out 'NoRKA Returnee ID Card' for Diaspora Returnees</h2>
+      <p>The Kerala government has introduced a special identification card framework to support workers returning from abroad.</p>
+      <a href="https://www.thehindu.com/news/national/kerala/keralam-rolls-out-norka-returnee-id-card-for-norks/article71559811.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#022</span>
+      </div>
+      <h2>RBI Forex Risk Reserve Requirements Impact Bank Profitability</h2>
+      <p>New regulatory risk reserve norms introduced by the Reserve Bank of India have started exerting short-term pressure on domestic bank margins.</p>
+      <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPdjBSQkYxdzJQOHNqbWZEOTM2Z3dQXzJ4ekJWSjVHQmhUcGthZFNxVUVQMW54dWFKMzhMS3RHS2ZreUgwYWRONlNyMEJhV3hzTHRwYkFuaDRPT3hRbTlFd3VnTl9nN0kzRmpjZ09GQmlsUHFXUlRKcEtrcnhOR3ZBbkNCbTVhcGlCNlpyVWNzemNDSHVjb1FCVXBIb1h0YzdIMUNzZW0xdlZGZ0M0aEZldkNPUHRhRU0?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#023</span>
+      </div>
+      <h2>Kerala Allocates Over ₹600 Crore Additional Funds for Karunya Health Schemes</h2>
+      <p>The state government approved a financial boost exceeding ₹600 crores to sustain state-level subsidized healthcare initiatives.</p>
+      <a href="https://www.thehindu.com/news/national/kerala/keralam-govt-allocates-over-600-cr-additional-funds-for-karunya-health-schemes/article71561135.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#024</span>
+      </div>
+      <h2>Seven Killed in Truck-Pickup Collision in Gujarat’s Kutch Renewable Energy Park</h2>
+      <p>A fatal accident involving a truck and a pickup vehicle occurred inside the strategic Renewable Energy Park near Khavda, resulting in multiple casualties.</p>
+      <a href="https://www.thehindu.com/news/national/gujarat/truck-pickup-collision-in-gujarats-kutch/article71563002.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#025</span>
+      </div>
+      <h2>Andhra Pradesh Fishers Seek Forest Rights-Style Legislation for Grounds</h2>
+      <p>Traditional fishing communities in Visakhapatnam have demanded comprehensive legal protection for traditional fishing grounds and early-warning systems.</p>
+      <a href="https://www.thehindu.com/news/national/andhra-pradesh/fishers-from-six-andhra-districts-seek-forest-rights-style-law-to-protect-fishing-grounds/article71559124.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#026</span>
+      </div>
+      <h2>Kerala High Court Directs Agencies to Expedite Sabarimala Pilgrimage Preparations</h2>
+      <p>The Kerala High Court issued strict directions to the Devaswom Board and Water Authority regarding waste management and infrastructure repairs ahead of the season.</p>
+      <a href="https://www.thehindu.com/news/national/kerala/kerala-hc-directs-kwa-devaswom-board-other-agencies-to-prepare-for-sabarimala-pilgrimage-season/article71560789.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#027</span>
+      </div>
+      <h2>Telangana RTC Operates Thousands of Special Buses to Clear Festival Rush</h2>
+      <p>State transport corporations have scaled up operations by deploying thousands of special buses to manage heavy passenger transit during festive periods.</p>
+      <a href="https://www.thehindu.com/news/national/telangana/telangana-rtc-to-operate-2425-special-buses-between-karimnagar-and-secunderabad-to-clear-festival-rush/article71560972.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🚀 Science & Tech</span>
+        <span class="index-num">#028</span>
+      </div>
+      <h2>SHAR Deputy Director Urges Educational Institutions to Establish Space Cells</h2>
+      <p>ISRO's SHAR facility leadership has called for setting up dedicated space technology cells in campuses to foster scientific curiosity among students.</p>
+      <a href="https://www.thehindu.com/news/national/andhra-pradesh/shar-deputy-director-urges-educational-institutions-to-set-up-space-cells-on-campus/article71560669.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#029</span>
+      </div>
+      <h2>Statewide Special Electoral Roll Revision Drives Underway Across States</h2>
+      <p>Election authorities have launched massive door-to-door verification and special registration camps across multiple states to update voter rolls.</p>
+      <a href="https://www.thehindu.com/news/national/maharashtra/ceo-has-set-up-special-voter-registration-camps-in-colleges-andhouse-to-house-verification-campaign/article71558902.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#030</span>
+      </div>
+      <h2>Kerala Constitutes University Finance Commission to Tackle Financial Crises</h2>
+      <p>The Kerala government has formed a finance commission headed by B.A. Prakash to rationalize resource allocation and prevent fiscal deficits in higher education.</p>
+      <a href="https://www.thehindu.com/news/national/kerala/keralam-constitutes-university-finance-commission-with-ba-prakash-as-chairperson/article71560357.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    </main>
+
+    <footer>
+      <p> For officer aspirants • Made By - Farmesh 🇮🇳</p>
+    </footer>
+  </div>
+</body>
+</html>
