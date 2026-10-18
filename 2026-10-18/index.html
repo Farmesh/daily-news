@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSB Strategic Briefing — 2026-10-18</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #070a13;
+      --bg-card: #0f1629;
+      --border-color: #1e293b;
+      --border-hover: #3b82f6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .nav-bar {
+      margin-bottom: 30px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-blue);
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f1629 0%, #16223e 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .classification {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px -10px rgba(56,189,248,0.15);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      background: rgba(15, 118, 110, 0.2);
+      color: #2dd4bf;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .index-num {
+      font-family: monospace;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .read-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(56,189,248,0.4);
+      transition: all 0.2s ease;
+    }
+
+    .read-btn:hover {
+      color: #60a5fa;
+      border-bottom-color: #60a5fa;
+      gap: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 0 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 16px 12px; }
+      header { padding: 28px 20px; }
+      h1 { font-size: 1.8rem; }
+      .news-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="nav-bar">
+      <a href="/" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Return to Archive Index
+      </a>
+    </div>
+
+    <header>
+      <span class="classification">Strategic Intelligence Briefing</span>
+      <h1>SSB Daily Digest</h1>
+      <div class="date-badge">Sunday, 18 October 2026</div>
+    </header>
+
+    <main>
+      
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#01</span>
+      </div>
+      <h2>Vice President Commissions Indigenous Warship INS Samarthak into Indian Navy</h2>
+      <p>INS Samarthak, a multi-purpose indigenous naval warship, has been commissioned into the Indian Navy in Karnataka by the Vice President.</p>
+      <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNV2p6czdkOE1hMUt2YnVqS1I0cTRpck9lTzdZTVE5VEFtd3FzQl9DX1UzS041d08tZEtKWWtrQUV5Ni1tY3JicXdHaW5McmRKeFlaSE5ONDMxMk1UNkZCSWVhaGs4SWEyZHN2c1pxbDk0VkhUQ0JaeWdQQlBleDViR1p1SkNpNF84SjFFRDR1XzRibFJFWHhyR3NsMWJRLVBqdVV3UjNtRDRzNHZsczRJYTdEOVF6Zw?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#02</span>
+      </div>
+      <h2>India Inks Rs 1,943 Crore Deal to Lease Two MQ-9B Sea Guardian Drones</h2>
+      <p>India has signed a Rs 1,943 crore contract to lease two MQ-9B Sea Guardian unmanned aerial systems for enhanced maritime surveillance.</p>
+      <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPMWtGaWxlNjlFbWdEYzNFWllLS2QtbXdoMThnaXJkM1RpVWlPb0lyRkxnblMteUswVGFKdlFvODNzcjQtcHAxNnlNN1N5Vk96UVc2RnAyYmRIcE9wV2xIbkc0b0NJUGgwaXVRQ3pCaXYzcG9BNGRtQ0NnbFhOaE1xelBPdFpCWE9xTmZpak9nN3lKTnJvUlZubTk2RFN2Ui1mcFZJOWw2aDJ0VnJXeURtUjFBaw?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#03</span>
+      </div>
+      <h2>India and UK Conclude Maritime Exercise Konkan-26 off Plymouth Coast</h2>
+      <p>The Indian Navy's INS Trishul successfully completed bilateral maritime drills with the Royal Navy, German, and Norwegian warships off the UK coast.</p>
+      <a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNTHhRQTRldGFUeFYwX01rLVZaMGpUNkVYV3FEZ1JGOVphYURSZWpvaEhmaTkxZ0ZkQzVKXzRYU0FhOWhseE1ZZXZjMW0wM3VfQWxNYjhCQ3R2S0RwcHBwTl85TEZGNHllb0RucDVpN3BPUjFwRk94cVdZcmloOXRnZEZhWnR1ZkdCNTF4WVVkOFhEdC0z?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#04</span>
+      </div>
+      <h2>IAF to Receive Dedicated GSAT-7C Satellite Under Rs 2,563-Crore Defence Deal</h2>
+      <p>The Ministry of Defence has sealed a deal for the indigenous GSAT-7C satellite to secure uninterrupted tactical communications for fighter aircraft.</p>
+      <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNOWFqLXpBVnJsbDZ2RXg2blExOVhBZmcwZ1pGLURzOXFhQ1FKLVFwXzJQeVpVUWc4cGpGYkEyWEJmT3NHUjBLalN4eHJCbkpDQi1xRUdJVE9sd2pNSlJ6WEVSb3R2QjRiblBaMTBPOXJIeVBFV1FCVnYtZV8wUTlrN2FFanUyUHBnbGNiNW1xNmhwNnNBZ2FZZjY4NTQtNFJPWGRBdXZzQkx5UE14eTU1N3lVQUpZRTRWbjh4dkgzSdIBxAFBVV95cUxQS2pRbkNHSFpmTmpnc0FOVGE3aU52OHZyZ08yQ21lX2ppR2pyc2ZsUDczMjhnLWE1Z2VNaE1VdTZKWHZ0cDA0YUU1WHpibGxKZ3dYcUV2RTZFbFRGNUhSNnc0YnZiVXZ4LVVtRGRWVWZNVVJ1TE9Ic0RQS3ZIZkVHZTRSVDZZd2owYXVKVTlvbkk3a0NkV0Z3RUxBTV8xOTlFb2dpOEFlc2FFWUNWY0lraVJBcENxVXU0UUpIRm5DdHA5OU5D?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#05</span>
+      </div>
+      <h2>Indian and Russian Navies Open Exercise INDRA 2026 in Vladivostok</h2>
+      <p>The bilateral naval exercise INDRA 2026 officially commenced with an opening ceremony in Vladivostok, Russia.</p>
+      <a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxPZ282dmRqNFJWRTdSMUUzOWdyQWxVT3hIN3N3dnNGQmVIdGIydHV5U21SOU5ka2QzMWFsVHI4SXVTX3lqbWRhUHhRMFg0a0hRWkNGdjZTNEV0VTNSb1FKSEgzZlIxYy12bVNmRlB5bFlINjdRVlA1YnBGNVJFQTRsUVE1Q0lPMGVSc3pHT0ktMl96OUtjRHd4SkdFaFcxOGw1NE9HblJvM0FZQWhEVThrZy1CQXk5TXk3Mmh4bGhDZmNxWE9RbWM5U0pFdk00QWZNV3c?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#06</span>
+      </div>
+      <h2>GRSE Kolkata Launches Next-Generation Offshore Patrol Vessel 'Shreyas'</h2>
+      <p>Garden Reach Shipbuilders and Engineers (GRSE) in Kolkata launched the Next Generation Offshore Patrol Vessel (Yard 3040, Shreyas).</p>
+      <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1pcnlHdnVmaVpnS3c3ZnZFQ0lfY1MtaTNHaWp4MkQ1aC1Ec2p3aE5OUG40bmRVN1lXLUJvbmF0ZEdrVTU5eTM1QmxSMkVxd2ZtX3gzN1lxTldvXzB2TzBMS3ZvU21JV3hIVHlyTG5FZTJJVW1uNFR6Q0VWbVc?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#07</span>
+      </div>
+      <h2>DRDO and Indian Navy Successfully Test Air-Droppable Container from P-8I</h2>
+      <p>The DRDO and Indian Navy successfully flight-tested an indigenous air-droppable container deployed from a P-8I long-range maritime patrol aircraft.</p>
+      <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPX0JBZTFDSkZic3Jkd2dDQVdLVDJVNC0tUmtITVRlNGZ2cU1obktuZndhelBrcHJDend6Z3c2VVpabmpablpLdUxMVmcwZGZJM3F2U09wUVN3MkZTNklDbVdyMXBfS3pjemVsWHRJcE1SSl9VdEpxUlVLWTVRdDFQUElRQXVwcXZKYlRQdC03RDVZR3ZZbWZoT0kzeHJyREZjdHMzT2l4czg4VkN6X3ZMVC1PcG8?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#08</span>
+      </div>
+      <h2>Indian Air Force Executes Pitch-Dark Night Medical Evacuation from Ladakh to Delhi</h2>
+      <p>The IAF executed a high-risk, short-notice night medical evacuation mission, airlifting a critically ill civilian from Leh to Palam.</p>
+      <a href="https://news.google.com/rss/articles/CBMi_gFBVV95cUxNSUlmeFQ5a3NKWHBDSXJ5UW8taEZZeExrVTYtZktOWHRQVHMtUzRkamlSZEltWWJHT2hZT0E4VVRQeTVhenFHUS16UXBfY3FaSVJ5SnRDRFNHTl9wdWptRUxUV29zOE1USTdfdVlqblBMczhmNmNWb0lWU1dYZnpRQXlZcnBvQ3VPREh6MU1HSGE0d3NGbGdHSUlEWHdBb2RZQXg5SkE3alJ3MVNZMzVQcWFMR3NqNHlQVV9LREdiRW8yanVYWUNFd0h2X0lNTGNzY1hsMGVwamh6NTZqVGZNVldaOVA4TmRkR1dEekszTkdpcEpMNTVlenpTV0Jyd9IBgwJBVV95cUxPckg0eHF2MnZsRGJsd184ZDJUMVJ5LVF0cU5aN1Fqa1ByTXp0QTkzUVBDWnB1YjZwUzRCV2h0bmFBcWVULURUdkVsRkhZRXgtcGZBT3BJTGlUaGJDNXFtdThwSGZjTU1tdTg0UWozYzl4dmlDdkZzdHZnUmdXWTlMSENtemNEQ3dBUWlDREZBMGlWTm5RQnMxZU5sUzdkazRTRlR6Y3NWNlB4Q0xOb0VyZzM0a2lMQVYxMXh2d25vbHBZUWxaRGxKcDBDLWNVVllYb2VTVTZzLWk2Qi0zUDVwWHRYTnhkQ1ZkNkUxVVNsXy1fOHhySDBEZWE5NEM1OTQzdm40?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#09</span>
+      </div>
+      <h2>Indian Navy Expands Karwar Naval Base Infrastructure Under Project Seabird</h2>
+      <p>The Indian Navy inaugurated 300 residential units and upgraded the naval hospital at Karwar under the strategic Project Seabird expansion.</p>
+      <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPWjhQM2xIQUI1UEdBTG5hWEIzSlg4dFpJSUVya05jOGdTZHgzX2hfclMwY09wbU1ZblRFSXd5aEhkUU54ay0yOGl4UVNyVEM1aVdPRjBodENKcnZibTQ1dnA4bnkzdEJfQkUyN2t2czV4QjRlWl9TQS1fOFhodm05NnNoYTdpSi01X2xiRGpkQU1Wa2ZJZlhuT0UyWk52WkMwUUE1OGFiSUZsWGZ5MjRqVy1EY2FNZU82VWk2OTBfQ1VCSDBsN09r?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#010</span>
+      </div>
+      <h2>DRDO Develops New Lightweight Armour Technology to Defeat 30mm AP Threats</h2>
+      <p>DRDO has engineered an advanced lightweight armour technology capable of defeating high-velocity 30mm armour-piercing ballistic threats.</p>
+      <a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQbG1GZEZvdHAwUlM0MlBvVUM0Q2NFZnN1MXllZjllbGpXaUJEU0lWWTIwcHhJNnBxSHBHd1pSeC1hSXpBSWQyOU45YVhUVTFOZmhyOEJRX253Qm9XNEkwazRZbk1BZ0EyS04zVHdaNGhfc3dSanItU1FYY1cyY2s4WnF5M0JjaThkUklZVGpEWFhuWHVFNXFRelZVd2VBY1BhNEE?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#011</span>
+      </div>
+      <h2>Pakistan Extends Airspace Ban on Indian Carriers as Strategic Strains Persist</h2>
+      <p>Pakistan has prolonged its airspace restriction for Indian airlines by another month, maintaining existing bilateral transport friction.</p>
+      <a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxNRTVCc0s0SDhPYWs0d1FhN2llN2tjVF83WGV2ZmthYTBzdjdmV2lrSWNXT0pNbUo4Q3IxQUVlTlpWTHFFTzkxc2FCNmszU2p6ajI3ai1uU2pNYnRaNmNwcFhhc2o1ZGt5c25zc1cydVFnaVUzTEwyeDBsNndCU3FPTVU3ZGEybmZFUXo0OUM4NEgxN0xMejRMOWFXT2ZydkJmUk91WnVnUXNMb0NMSjBRUTlCM1ktcnE4UW9Xc2phSEdVM284aS1LbHZyVVgzWDNCX1ZPbTU5QzRGOTFYYnptMF9zb9IB6gFBVV95cUxPRUNlT2hISnNKYkZtdGFrRW1zM1lIZHd6QkZvTk5WdDV2VnVISThiZUw1aGJYS3lGOUZ1U3hNQjVzVHRpVWVOcmttRWdBNEpwM3p4Y1k0eVpQZWxXTlNvVFNqNWxneThoMGdsTG5zS0QtbFJCODZVc0hueXRBNEwwR3hTQ0w1dExmM0ZwMHhjNU1PQ1JkVlpVRE1MRklDZWJGbWZQNk1WbWZyMmI4SW9Ea0RjVzRHRnpaaDUwNHluZEZ2VVFNVk9LMVY3TlV5Q09ieFI5bk1IQ1pRaXdNR1MybS0yQnpFTzA2cFE?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌏 Geopolitics & IR</span>
+        <span class="index-num">#012</span>
+      </div>
+      <h2>Indian Navy Training Squadron Concludes Seychelles Deployment, Boosts Maritime Ties</h2>
+      <p>The Indian Navy training squadron successfully completed its Seychelles visit, undertaking joint patrols and bilateral maritime drills.</p>
+      <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOWDJ1SjF4dmN6QTdCeFpaSmREN2N5cHJwQ2FFU21CdUxkWlA0ZVBRMkNSa011cjlMenhYTnFHT1dQbHZoNHh5TmhfUHM2SU1INndKSkxMTVg5WDV1UjFrZXNwQ0Vjd2RzQkcyVGJEMTlNNHFLNjlHTkRoaUxVTTV6N0tSTFlYLURRMEh5U0xaSVpwQmtmSlBVaUxiUlNMaEdrRU94UG5jM0hWQkNlU2kwWVVmR0pNeHBiLUVMQw?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#013</span>
+      </div>
+      <h2>Supreme Court Issues Notice on Lifelong Immunity Provision for CEC and ECs</h2>
+      <p>The Supreme Court questioned Section 16 of the 2023 law granting the CEC and ECs lifelong immunity, noting it exceeds presidential immunities.</p>
+      <a href="https://www.thehindu.com/news/national/the-debate-over-immunity-to-cec-ecs/article71589739.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#014</span>
+      </div>
+      <h2>Public Audit in Delhi Booths Flags Major Anomalies in Voter Roll Re-verification</h2>
+      <p>A public audit in Delhi revealed that over 100 eligible voters were erroneously marked absent, shifted, or dead during roll revision exercises.</p>
+      <a href="https://www.thehindu.com/news/cities/Delhi/delhi-sir-public-audit-in-two-booths-find-over-100-voters-wrongly-marked-absent-shifted-or-dead/article71600683.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#015</span>
+      </div>
+      <h2>Kerala CM Unveils Blue Economy Hub in Aroor to Boost Coastal Development</h2>
+      <p>Kerala Chief Minister announced a dedicated blue economy hub in Aroor alongside infrastructure project inaugurations.</p>
+      <a href="https://www.thehindu.com/news/national/kerala/cm-satheesan-announces-blue-economy-hub-in-keralams-aroor-inaugurates-bridge/article71600438.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#016</span>
+      </div>
+      <h2>Telangana Implements El Niño Rural Water Supply Contingency Plan</h2>
+      <p>Telangana has rolled out a comprehensive rural water security plan involving borewell recharge structures and pipeline safety protocols.</p>
+      <a href="https://www.thehindu.com/news/national/telangana/telanganas-el-nino-contingency-plan-for-uninterrupted-water-supply-in-rural-areas/article71595939.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#017</span>
+      </div>
+      <h2>RBI Issues NOC for REC-PFC Merger as Financial Consolidation Awaits Approvals</h2>
+      <p>The Reserve Bank of India has issued a No-Objection Certificate for the proposed merger between REC and PFC, pending creditor clearances.</p>
+      <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9oc0FIRUdlZnpob1VtRzY4dHAwbmhhcEljcXVvaWlVN0pxa2FrS05JcmRKZE9WcnN5VjFMUlBjbjVtVEVHS0dCR1JHU0xGV2NBNXV6WmxBQzBGNHJmUkhxRzl0clZ4VEV4R3p6TkVwXzUyU2EwSUNWWDBWbFlwZTg?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#018</span>
+      </div>
+      <h2>India's Aging Population Projections Highlight Need for Elder Care Workforce</h2>
+      <p>With India's population aged 60 and above projected to hit 347 million by 2050, experts call for a formal caregiving ecosystem.</p>
+      <a href="https://www.thehindu.com/news/national/why-does-india-need-a-trained-workforce-for-elderly-care/article71576741.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#019</span>
+      </div>
+      <h2>Stubble Burning Persistence Highlights Structural Gaps in Crop Residue Management</h2>
+      <p>Legal, economic, and technological factors continue to fuel stubble fires across northern agricultural belts during the paddy-wheat cycle.</p>
+      <a href="https://www.thehindu.com/news/national/why-stubble-fires-keep-coming-back/article71559694.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🚀 Science & Tech</span>
+        <span class="index-num">#020</span>
+      </div>
+      <h2>Andhra Student Designs Voice-Enabled Braille Printer for James Dyson Award</h2>
+      <p>An engineering student from Andhra Pradesh developed 'RUDHRA', a voice-enabled Braille printer shortlisted for the international Dyson Award.</p>
+      <a href="https://www.thehindu.com/news/national/andhra-pradesh/20-year-old-andhra-student-makes-top-20-list-for-james-dyson-award-with-voice-enabled-braille-printer/article71596127.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🚀 Science & Tech</span>
+        <span class="index-num">#021</span>
+      </div>
+      <h2>Aaka Space Plans India's First Underwater Human Spaceflight Analog Mission</h2>
+      <p>Aaka Space has announced plans to conduct India's inaugural underwater human spaceflight analog mission in Gujarat.</p>
+      <a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOM1ZYWjBIZENPNlNKMmVvN2VKQlBMNjBMN1NVZHpRcVlMNFpTb2ZESjNUdGFrbUVyYW1uOURrVXYtQ2prS2lYVXBlWEk5bV9iSEJQQ3E5UU14RzdxQm9Hd2ZVSjFkZkpuYTQtOTdJVFNYZl9mMHU5aFdnTTdseHBxVXY4XzZjcFhta1BoWlk4aWd2TDZtb3dxbUdXeV9JSlkxQkw2V1BDWnF1dm9QNHIyQzJsOVV1cVotUFZOT3h5S1B4VHRudW01bGlYajUwREFydlg2ZtIB4gFBVV95cUxOMGd4VEN2WkFhMXUtc0NMdDhjNVBILTlKeFh6bFFodk44azRrMDRnV05aUWhQSk5HY0RlLUJLa3VkRDJSLXJvQ3VkZzI3X2RGSS1oQWczMUpKXzQ2eWM2bEVNMVotNlFfb2taMUlJRS1rWUZjRlFScXlDQ01vQjZBNTQ1NkFOYnhaams0U3dzdnhEOVRfeFZFSEpwMkhDRDB4M295VG9rYTdUTDV6MkcwdTM4YkgxMmE4bjU3dzlURXhwaUVJN2FDVzdpRkozMTJ2dDlFODJReno5TGFpcUdaZWdn?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌐 Global Flashpoints & Affairs</span>
+        <span class="index-num">#022</span>
+      </div>
+      <h2>Three Malayalis Killed in Germany Building Fire Set to Repatriate on Oct 20</h2>
+      <p>The bodies of three Indian nationals killed in an arson-linked apartment fire in Bochum, Germany, will arrive in Kerala.</p>
+      <a href="https://www.thehindu.com/news/national/kerala/bodies-of-three-malayalis-killed-in-germany-building-fire-to-reach-keralam-on-october-20/article71600566.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🌐 Global Flashpoints & Affairs</span>
+        <span class="index-num">#023</span>
+      </div>
+      <h2>Air India and AI Express Extend Saudi Arabia Flight Suspensions Through Oct 24</h2>
+      <p>Following cancellations by other domestic carriers, Air India and Air India Express have suspended their Saudi Arabian services until October 24.</p>
+      <a href="https://www.thehindu.com/news/national/air-india-and-ai-express-cancel-saudi-arabia-flights-till-oct-24/article71595997.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#024</span>
+      </div>
+      <h2>Rajnath Singh Honours IASV Triveni Team for Landmark All-Women Sailing Expedition</h2>
+      <p>Defence Minister Rajnath Singh felicitated the officers of the all-women sailing expedition team IASV Triveni for their historic seafaring voyage.</p>
+      <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQVW1jdXM5WGFQdVFxaWhwTzM0SnV4bHFMQ2pqR2R3OEVBY0phV1pBS2tuR0dNYlBCOGhkNURYY3pVVHBmbS1DcXh1T0lLRW5oNkhjNWgyZkpaVXUyLWd6RjRIdEZYV2lFLUZOT09kcEFBX2VhaWdoX3ZraHpJQzltRmNJY0UzZUdDd18tNnVTV0FHVWpqdzBLTzJvX1ZFbzJSMFpsYW5heWNUbTA?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#025</span>
+      </div>
+      <h2>Death Toll Rises to 19 in Kolkata Durga Puja Stampede as Judicial Probe Begins</h2>
+      <p>The death toll from the Kolkata Durga Puja pandal stampede reached 19, prompting a sitting High Court judge-led inquiry and strict crowd advisories.</p>
+      <a href="https://www.thehindu.com/news/cities/kolkata/kolkata-durga-puja-stampede-toll-rises-to-19-sitting-hc-judge-to-probe-incident/article71598984.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">💰 Economy & Strategy</span>
+        <span class="index-num">#026</span>
+      </div>
+      <h2>Heavy Monsoonal Rains Batter Chennai as Northeast Monsoon Intensifies</h2>
+      <p>Torrential overnight rains lashed Chennai, recording up to 36 cm of rainfall as municipal machinery scrambled to clear waterlogging.</p>
+      <a href="https://www.thehindu.com/news/cities/chennai/heavy-overnight-rain-batters-chennai-as-northeast-monsoon-get-active-in-tamil-nadu/article71600273.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🇮🇳 Govt Schemes & Policy</span>
+        <span class="index-num">#027</span>
+      </div>
+      <h2>Kuki Group Announces Key Manipur Highway Shutdown Following Village Attacks</h2>
+      <p>A Kuki civil society group declared a highway shutdown in Manipur following renewed village attacks, leading to administrative reshuffles.</p>
+      <a href="https://www.thehindu.com/news/national/manipur/kuki-group-announces-shutdown-of-key-manipur-highway-after-attacks-on-villages/article71600255.ece" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#028</span>
+      </div>
+      <h2>Amazon Engineer Quits Rs 46 Lakh Job to Join Indian Army as Officer</h2>
+      <p>A 27-year-old tech professional gave up a high-paying software engineering position to pursue a commission in the Indian Army.</p>
+      <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE9mZmdDUGd6R0dfRFlORDFYZVU1U0RTUVhNUko3OW5RVXlHRmw2eXFjRk4tRWpMTVlTa0xIV1lyU0tKdEZ4YTFmQzd6SjN1NWdLdmVkUDBZWGkyaktFbHZkUHgwQndBRTMtd2c?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#029</span>
+      </div>
+      <h2>IAF Suryakiran Aerobatic Team Stages Nine-Aircraft Display in Varanasi</h2>
+      <p>The Indian Air Force's Suryakiran Aerobatic Team performed a spectacular nine-aircraft display over Varanasi's Namo Ghat.</p>
+      <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOVmlRZU1jQVVvbFI5ZDNVenJUUjBBcU1rRnh6VFFqdHBfWm5PSVhfS0NILUd1NlZLLVd2dEhHTlRyaUNZUklia0IwQVFiQ0FyYVVfRWZ6TjQyVHFsbGwxVHhXRlZtQjZleUJrYWVoNjZxcFZsOWZmMWxCSC1hLVl6czZWaXBGZGhKMnhoNHBSVEpCcHJOU1AtN3B4eDkxYnRBeVNSem0tX2lvbVllUG5GWDgxTmtqQnJCeV9rMTIzZVZTR19WcHc4azQtQmRKRmfSAdQBQVVfeXFMTlg4eGE1cXhIcVJvN3JiN2FYZTc5ZkdOWWwtazhpSVRqbGRDZmgxaFl1WFV0a1NrbjFZRzk5MTgtY1I3Qm9WQkY2MVZQR2YyanpZNTd5aTE1ZEI4RTBzdmhCdjhBRlhoamtiWHZ0MGh2NF9YZ1JyMF9EbzJCMEFlbDZFMTZIS0lpTW0yRWtrZEtSTFA4bktubWllUEpQcDk0TUNZODZYSGV1TGV6Z1luemdReHk2Q3NTVVBHSHJVY2E0MlBYWktvNndMR2pUNlFMS0RuN2U?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    <article class="news-card">
+      <div class="card-meta">
+        <span class="badge">🛡️ Defence & Security</span>
+        <span class="index-num">#030</span>
+      </div>
+      <h2>Ministry of Defence Concludes 3-Week Defence Correspondents Course</h2>
+      <p>Twenty-four journalists successfully completed the Ministry of Defence's intensive 3-week Defence Correspondents Course covering maritime and high-altitude operations.</p>
+      <a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxOSzVOWk9SZDhNYWw5b0RwVVU0YWgwbTVwUFFwZERJeFV3SldvZjl4cVNHdU5MT1hHWnBOM3RhTFlyRGFLdjR4QkszQWRKc180ZmJvVmtsWW4xOUNRYmpNZXhJaktvZjYyRllXVHM3WmNXckt0ZlZOdFhfUV95aUhRVDNpQy1YdmJlQWplSDV5alowYTBwX1NaNVlnTUc4TExCRXd3Z0hPeU5rZzFaTW5TSEZ5dVlxWjhESnE5Y0VKTzFFdFZZSnpWRmFKRVRfY052WWVMaElHNmhrNzNFMThnVEpZSdIB4wFBVV95cUxOSzVOWk9SZDhNYWw5b0RwVVU0YWgwbTVwUFFwZERJeFV3SldvZjl4cVNHdU5MT1hHWnBOM3RhTFlyRGFLdjR4QkszQWRKc180ZmJvVmtsWW4xOUNRYmpNZXhJaktvZjYyRllXVHM3WmNXckt0ZlZOdFhfUV95aUhRVDNpQy1YdmJlQWplSDV5alowYTBwX1NaNVlnTUc4TExCRXd3Z0hPeU5rZzFaTW5TSEZ5dVlxWjhESnE5Y0VKTzFFdFZZSnpWRmFKRVRfY052WWVMaElHNmhrNzNFMThnVEpZSQ?oc=5" target="_blank" class="read-btn">
+        <span>Read Source Intel</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+  
+    </main>
+
+    <footer>
+      <p> For officer aspirants • Made By - Farmesh 🇮🇳</p>
+    </footer>
+  </div>
+</body>
+</html>
